@@ -58,12 +58,23 @@ app.get("/product/:id", async (req, res) => {
 
 app.put("/product/:id", async (req, res) => {
     let result = await Product.updateOne(
-        { _id: req.params.id }, 
+        { _id: req.params.id },
         {
-        $set: req.body
+            $set: req.body
         }
     );
     res.send(result);
-})
+});
+
+app.get("/search/:id", async (req, res) => {
+    let result = await Product.find({
+        "$or": [
+            { name: { $regex: req.params.id } },
+            { price: { $regex: req.params.id } },
+            { category: { $regex: req.params.id } }
+        ]
+    });
+    res.send(result);
+});
 
 app.listen(5000);

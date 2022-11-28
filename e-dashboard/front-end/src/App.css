@@ -75,6 +75,14 @@
   border: 1px solid skyblue;
 }
 
+.searchBox {
+  width: 300px;
+  height: 25px;
+  border: solid 1px deepskyblue;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
 .input-error {
   color: indianred;
   margin-top: -10px;
